@@ -39,14 +39,7 @@ public class DatexDataSource {
     }
 
     public boolean createDatabaseObject(DatabaseObject object) {
-        boolean success;
-        try {
-            success = database.insertOrThrow(object.getTableName(), null, object.getContentValues()) != -1;
-        } catch (Exception e) {
-            success = false;
-            e.printStackTrace();
-        }
-        return success;
+        return database.insert(object.getTableName(), null, object.getContentValues()) != -1;
     }
 
 }

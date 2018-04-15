@@ -118,9 +118,16 @@ public class Patient implements DatabaseObject {
                     listener.onCatchNull(pointers[x]);
                 }
             } else if (notNulls[x].equals("")) {
+                valid = false;
                 if (listener != null) {
                     listener.onCatchNull(pointers[x]);
                 }
+            }
+        }
+        if (stateOfOrigin == 0) {
+            valid = false;
+            if (listener != null) {
+                listener.onCatchNull(DB_INPUT.STATE_OF_ORIGIN);
             }
         }
         return valid;

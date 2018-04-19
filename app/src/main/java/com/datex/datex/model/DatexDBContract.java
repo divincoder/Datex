@@ -16,6 +16,7 @@ class DatexDBContract {
         static String SEX = "sex VARCHAR(1) NOT NULL";
         static String ADDRESS = "address VARCHAR(50)";
         static String STATE_OF_ORIGIN = "state_of_origin INTEGER NOT NULL";
+        static String PHONE_NO = "phone_no VARCHAR(15) NOT NULL";
         static int ID_INDEX = 0;
         static int FIRST_NAME_INDEX = 1;
         static int MIDDLE_NAME_INDEX = 2;
@@ -24,7 +25,8 @@ class DatexDBContract {
         static int SEX_INDEX = 5;
         static int ADDRESS_INDEX = 6;
         static int STATE_OF_ORIGIN_INDEX = 7;
-        static String[] CONFIG = {ID, FIRST_NAME, MIDDLE_NAME, LAST_NAME, DOB, SEX, ADDRESS, STATE_OF_ORIGIN};
+        static int PHONE_NO_INDEX = 8;
+        static String[] CONFIG = {ID, FIRST_NAME, MIDDLE_NAME, LAST_NAME, DOB, SEX, ADDRESS, STATE_OF_ORIGIN, PHONE_NO};
     }
 
     static class GlycemicData {
@@ -33,14 +35,18 @@ class DatexDBContract {
         static String PATIENT_ID = "patient_id INTEGER NOT NULL";
         static String BMI = "bmi TEXT NOT NULL";
         static String RBG = "rbg TEXT NOT NULL";
+        static String HBA1C = "hba1c TEXT NOT NULL";
         static String MEDICATION = "medication TEXT NOT NULL";
+        static String LAST_UPDATE_TIME = "last_update_time VARCHAR(19)";
         static int ID_INDEX = 0;
         static int PATIENT_ID_INDEX = 1;
         static int BMI_INDEX = 2;
         static int RBG_INDEX = 3;
-        static int MEDICATION_INDEX = 4;
+        static int HBA1C_INDEX = 4;
+        static int MEDICATION_INDEX = 5;
+        static int LAST_UPDATE_TIME_INDEX = 6;
         // TODO: FOREIGN KEYS HERE.
-        static String[] CONFIG = {ID, PATIENT_ID, BMI, RBG, MEDICATION};
+        static String[] CONFIG = {ID, PATIENT_ID, BMI, RBG, HBA1C, MEDICATION, LAST_UPDATE_TIME};
     }
 
     static class CoronaryRiskFactor {
@@ -48,15 +54,21 @@ class DatexDBContract {
         static String ID = "_id INTEGER PRIMARY KEY";
         static String PATIENT_ID = "patient_id INTEGER NOT NULL";
         static String TOTAL_CHOLESTEROL = "total_cholesterol INTEGER NOT NULL";
+        static String TRYGLYCERIDES = "tryglycerides TEXT NOT NULL";
         static String HDL_C = "hdl_c TEXT NOT NULL";
         static String LDL_C = "ldl_c TEXT NOT NULL";
+        static String BP = "bp TEXT NOT NULL";
+        static String LAST_UPDATE_TIME = "last_update_time VARCHAR(19)";
         static int ID_INDEX = 0;
         static int PATIENT_ID_INDEX = 1;
         static int TOTAL_CHOLESTEROL_INDEX = 2;
+        static int TRYGLYCERIDES_INDEX = 3;
         static int HDL_C_INDEX = 4;
         static int LDL_C_INDEX = 5;
+        static int BP_INDEX = 6;
+        static int LAST_UPDATE_TIME_INDEX = 7;
         // TODO: FOREIGN KEYS HERE.
-        static String[] CONFIG = {ID, PATIENT_ID, TOTAL_CHOLESTEROL, HDL_C, LDL_C};
+        static String[] CONFIG = {ID, PATIENT_ID, TOTAL_CHOLESTEROL, TRYGLYCERIDES, HDL_C, LDL_C, BP, LAST_UPDATE_TIME};
     }
 
     static class DBContract {

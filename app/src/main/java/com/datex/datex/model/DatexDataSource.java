@@ -42,4 +42,8 @@ public class DatexDataSource {
         return database.insert(object.getTableName(), null, object.getContentValues()) != -1;
     }
 
+    public Patient getPatient(int id) {
+        return null;
+    }
+
 }

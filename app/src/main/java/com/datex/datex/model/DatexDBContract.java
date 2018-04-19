@@ -7,7 +7,7 @@ package com.datex.datex.model;
 class DatexDBContract {
 
     static class Patients {
-        static String TABLE_NAME = "new_course_registrations";
+        static String TABLE_NAME = "patients";
         static String ID = "_id INTEGER PRIMARY KEY";
         static String FIRST_NAME = "first_name VARCHAR(30) NOT NULL";
         static String MIDDLE_NAME = "middle_name VARCHAR(30)";
@@ -25,6 +25,38 @@ class DatexDBContract {
         static int ADDRESS_INDEX = 6;
         static int STATE_OF_ORIGIN_INDEX = 7;
         static String[] CONFIG = {ID, FIRST_NAME, MIDDLE_NAME, LAST_NAME, DOB, SEX, ADDRESS, STATE_OF_ORIGIN};
+    }
+
+    static class GlycemicData {
+        static String TABLE_NAME = "glycemic_data";
+        static String ID = "_id INTEGER PRIMARY KEY";
+        static String PATIENT_ID = "patient_id INTEGER NOT NULL";
+        static String BMI = "bmi TEXT NOT NULL";
+        static String RBG = "rbg TEXT NOT NULL";
+        static String MEDICATION = "medication TEXT NOT NULL";
+        static int ID_INDEX = 0;
+        static int PATIENT_ID_INDEX = 1;
+        static int BMI_INDEX = 2;
+        static int RBG_INDEX = 3;
+        static int MEDICATION_INDEX = 4;
+        // TODO: FOREIGN KEYS HERE.
+        static String[] CONFIG = {ID, PATIENT_ID, BMI, RBG, MEDICATION};
+    }
+
+    static class CoronaryRiskFactor {
+        static String TABLE_NAME = "coronary_risk_factor";
+        static String ID = "_id INTEGER PRIMARY KEY";
+        static String PATIENT_ID = "patient_id INTEGER NOT NULL";
+        static String TOTAL_CHOLESTEROL = "total_cholesterol INTEGER NOT NULL";
+        static String HDL_C = "hdl_c TEXT NOT NULL";
+        static String LDL_C = "ldl_c TEXT NOT NULL";
+        static int ID_INDEX = 0;
+        static int PATIENT_ID_INDEX = 1;
+        static int TOTAL_CHOLESTEROL_INDEX = 2;
+        static int HDL_C_INDEX = 4;
+        static int LDL_C_INDEX = 5;
+        // TODO: FOREIGN KEYS HERE.
+        static String[] CONFIG = {ID, PATIENT_ID, TOTAL_CHOLESTEROL, HDL_C, LDL_C};
     }
 
     static class DBContract {

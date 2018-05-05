@@ -27,15 +27,15 @@ public class DatexOpenHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         // Patients Table.
         sqLiteDatabase.execSQL(DBContract.createTable(Patients.TABLE_NAME, Patients.CONFIG, ""));
-        sqLiteDatabase.execSQL(DBContract.createTable(GlycemicData.TABLE_NAME, GlycemicData.CONFIG, ""));
-        sqLiteDatabase.execSQL(DBContract.createTable(CoronaryRiskFactor.TABLE_NAME, CoronaryRiskFactor.CONFIG, ""));
+        sqLiteDatabase.execSQL(DBContract.createTable(GlycemicDataTable.TABLE_NAME, GlycemicDataTable.CONFIG, ""));
+        sqLiteDatabase.execSQL(DBContract.createTable(CoronaryRiskFactorTable.TABLE_NAME, CoronaryRiskFactorTable.CONFIG, ""));
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int oldVersion, int newVersion) {
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + Patients.TABLE_NAME);
-        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + GlycemicData.TABLE_NAME);
-        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + CoronaryRiskFactor.TABLE_NAME);
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + GlycemicDataTable.TABLE_NAME);
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + CoronaryRiskFactorTable.TABLE_NAME);
         onCreate(sqLiteDatabase);
     }
 

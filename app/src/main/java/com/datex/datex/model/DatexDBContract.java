@@ -29,7 +29,7 @@ class DatexDBContract {
         static String[] CONFIG = {ID, FIRST_NAME, MIDDLE_NAME, LAST_NAME, DOB, SEX, ADDRESS, STATE_OF_ORIGIN, PHONE_NO};
     }
 
-    static class GlycemicData {
+    static class GlycemicDataTable {
         static String TABLE_NAME = "glycemic_data";
         static String ID = "_id INTEGER PRIMARY KEY";
         static String PATIENT_ID = "patient_id INTEGER NOT NULL";
@@ -49,7 +49,7 @@ class DatexDBContract {
         static String[] CONFIG = {ID, PATIENT_ID, BMI, RBG, HBA1C, MEDICATION, LAST_UPDATE_TIME};
     }
 
-    static class CoronaryRiskFactor {
+    static class CoronaryRiskFactorTable {
         static String TABLE_NAME = "coronary_risk_factor";
         static String ID = "_id INTEGER PRIMARY KEY";
         static String PATIENT_ID = "patient_id INTEGER NOT NULL";

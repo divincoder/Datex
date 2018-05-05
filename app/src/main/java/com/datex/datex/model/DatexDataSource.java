@@ -49,11 +49,12 @@ public class DatexDataSource {
         Cursor cursor = database.query(Patients.TABLE_NAME, null, DBContract.getName(Patients.ID) + " = ?", new String[] {id}, null, null, null);
         if (cursor.moveToFirst()) {
             Patient patient = new Patient(cursor.getInt(Patients.ID_INDEX), cursor.getString(Patients.FIRST_NAME_INDEX),
-                    cursor.getString(Patients.LAST_NAME_INDEX), cursor.getString(Patients.LAST_NAME_INDEX));
+                    cursor.getString(Patients.MIDDLE_NAME_INDEX), cursor.getString(Patients.LAST_NAME_INDEX));
             patient.setAddress(cursor.getString(Patients.ADDRESS_INDEX));
             patient.setDob(cursor.getString(Patients.DOB_INDEX));
             patient.setSex(cursor.getString(Patients.SEX_INDEX));
             patient.setStateOfOrigin(cursor.getInt(Patients.STATE_OF_ORIGIN_INDEX));
+            patient.setPhone(cursor.getString(Patients.PHONE_NO_INDEX));
             cursor.close();
             return patient;
         }

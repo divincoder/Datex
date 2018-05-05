@@ -17,6 +17,7 @@ public class Patient implements DatabaseObject {
     private String dob;
     private String sex;
     private String address;
+    private String phone;
     private int stateOfOrigin;
     private ValidationListener listener;
 
@@ -43,6 +44,14 @@ public class Patient implements DatabaseObject {
 
     public String getSex() {
         return sex;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public void setSex(String sex) {

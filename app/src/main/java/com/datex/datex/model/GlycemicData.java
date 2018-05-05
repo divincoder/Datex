@@ -13,7 +13,7 @@ public class GlycemicData implements DatabaseObject {
     private String hba1C;
     private String medication;
     private String lastUpdateTime;
-    private String diagnosis;
+    private int diagnosisId;
     private ValidationListener listener;
 
     /**
@@ -56,12 +56,12 @@ public class GlycemicData implements DatabaseObject {
         return hba1C;
     }
 
-    public String getDiagnosis() {
-        return diagnosis;
+    public int getDiagnosisId() {
+        return diagnosisId;
     }
 
-    public void setDiagnosis(String diagnosis) {
-        this.diagnosis = diagnosis;
+    public void setDiagnosisId(int diagnosisId) {
+        this.diagnosisId = diagnosisId;
     }
 
     public void setHba1C(String hba1C) {

@@ -71,6 +71,18 @@ public class DatexDataSource {
      */
     public GlycemicData getGlycemicData(int patientId) {
         Cursor cursor = database.query(GlycemicDataTable.TABLE_NAME, null, DBContract.getName(GlycemicDataTable.PATIENT_ID) + " = ?", new String[] {String.valueOf(patientId)}, null, null, null);
+        if (cursor.moveToFirst()) {
+            GlycemicData glycemicData = new GlycemicData(cursor.getInt(GlycemicDataTable.ID_INDEX), cursor.getInt(GlycemicDataTable.PATIENT_ID_INDEX));
+            glycemicData.setBmi(cursor.getString(GlycemicDataTable.BMI_INDEX));
+            glycemicData.setRbg(cursor.getString(GlycemicDataTable.RBG_INDEX));
+            glycemicData.setHba1C(cursor.getString(GlycemicDataTable.HBA1C_INDEX));
+            glycemicData.setMedication(cursor.getString(GlycemicDataTable.MEDICATION_INDEX));
+            glycemicData.setLastUpdateTime(cursor.getString(GlycemicDataTable.LAST_UPDATE_TIME_INDEX));
+            glycemicData.setDiagnosisId(cursor.getInt(GlycemicDataTable.DIAGNOSIS_ID_INDEX));
+            cursor.close();
+            return glycemicData;
+        }
+        cursor.close();
         return null;
     }
 

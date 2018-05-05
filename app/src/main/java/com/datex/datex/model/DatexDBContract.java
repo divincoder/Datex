@@ -37,7 +37,7 @@ class DatexDBContract {
         static String RBG = "rbg TEXT NOT NULL";
         static String HBA1C = "hba1c TEXT NOT NULL";
         static String MEDICATION = "medication TEXT";
-        static String DIAGNOSIS = "diagnosis TEXT";
+        static String DIAGNOSIS_ID = "diagnosis_id INTEGER";
         static String LAST_UPDATE_TIME = "last_update_time VARCHAR(19)";
         static int ID_INDEX = 0;
         static int PATIENT_ID_INDEX = 1;
@@ -45,10 +45,10 @@ class DatexDBContract {
         static int RBG_INDEX = 3;
         static int HBA1C_INDEX = 4;
         static int MEDICATION_INDEX = 5;
-        static int DIAGNOSIS_INDEX = 6;
+        static int DIAGNOSIS_ID_INDEX = 6;
         static int LAST_UPDATE_TIME_INDEX = 6;
         // TODO: FOREIGN KEYS HERE.
-        static String[] CONFIG = {ID, PATIENT_ID, BMI, RBG, HBA1C, MEDICATION, DIAGNOSIS, LAST_UPDATE_TIME};
+        static String[] CONFIG = {ID, PATIENT_ID, BMI, RBG, HBA1C, MEDICATION, DIAGNOSIS_ID, LAST_UPDATE_TIME};
     }
 
     static class CoronaryRiskFactorTable {
@@ -71,6 +71,16 @@ class DatexDBContract {
         static int LAST_UPDATE_TIME_INDEX = 7;
         // TODO: FOREIGN KEYS HERE.
         static String[] CONFIG = {ID, PATIENT_ID, TOTAL_CHOLESTEROL, TRYGLYCERIDES, HDL_C, LDL_C, BP, LAST_UPDATE_TIME};
+    }
+
+    static class DiagnosisTable {
+        static String TABLE_NAME = "diagnosis";
+        static String ID = "_id INTEGER PRIMARY KEY";
+        static String NAME = "name TEXT NOT NULL";
+        static int ID_INDEX = 0;
+        static int NAME_INDEX = 1;
+        // TODO: FOREIGN KEYS HERE.
+        static String[] CONFIG = {ID, NAME};
     }
 
     static class DBContract {

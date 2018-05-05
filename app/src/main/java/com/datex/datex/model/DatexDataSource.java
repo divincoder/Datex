@@ -42,6 +42,13 @@ public class DatexDataSource {
         dbHelper.close();
     }
 
+    /**
+     *
+     * creates a database object. how and where the data is created is handled by the object passed.
+     *
+     * @param object an objec that implements the DataBaseObject interface.
+     * @return id of newly created record in the database.
+     */
     public long createDatabaseObject(DatabaseObject object) {
         return database.insert(object.getTableName(), null, object.getContentValues());
     }

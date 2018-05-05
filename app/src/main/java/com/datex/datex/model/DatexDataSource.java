@@ -2,6 +2,7 @@ package com.datex.datex.model;
 
 import android.content.Context;
 import android.database.Cursor;
+import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 
@@ -60,6 +61,16 @@ public class DatexDataSource {
         }
         cursor.close();
         return null;
+    }
+
+    /**
+     *
+     * gets the number of patient records in the database.
+     *
+     * @return the number of patient records in the database.
+     */
+    public long getPatientsCount() {
+        return DatabaseUtils.queryNumEntries(database, Patients.TABLE_NAME);
     }
 
     /**

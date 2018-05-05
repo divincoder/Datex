@@ -10,6 +10,7 @@ public enum DB_INPUT {
     LAST_NAME("last_name"),
     SEX("sex"),
     DOB("DOB"),
+    PHONE("phone"),
     STATE_OF_ORIGIN("state"),
     BMI("bmi"),
     RBG("rbg"),

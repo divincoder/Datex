@@ -42,8 +42,8 @@ public class DatexDataSource {
         dbHelper.close();
     }
 
-    public boolean createDatabaseObject(DatabaseObject object) {
-        return database.insert(object.getTableName(), null, object.getContentValues()) != -1;
+    public long createDatabaseObject(DatabaseObject object) {
+        return database.insert(object.getTableName(), null, object.getContentValues());
     }
 
     public Patient getPatient(int id) {
@@ -95,6 +95,26 @@ public class DatexDataSource {
         }
         cursor.close();
         return null;
+    }
+
+    /**
+     *
+     * PLEASE DO NOT IN ANY WAY EVER CALL THIS FUNCTION!!!!!!!!!!
+     *
+     * THIS IS FOR UNIT TESTING.
+     *
+     * AND DO NOT EVER RUN THE UNIT TESTS ON OUR PRODUCTION DEVICE!!!!!!!!!!!
+     *
+     * I CAN'T STRESS THIS ENOUGH
+     *
+     * I KNOW U UNDERSTAND :-)
+     *
+     * This function erases all data in all tables.
+     *
+     */
+    public void reset() {
+        database.execSQL("DELETE FROM " + Patients.TABLE_NAME + ";");
+        database.execSQL("DELETE FROM " + GlycemicDataTable.TABLE_NAME + ";");
     }
 
 }

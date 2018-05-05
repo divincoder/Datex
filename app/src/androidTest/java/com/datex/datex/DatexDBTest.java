@@ -5,6 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.datex.datex.model.DatexDataSource;
 import com.datex.datex.model.DatexOpenHelper;
+import com.datex.datex.model.Patient;
 
 import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
@@ -20,12 +21,12 @@ public class DatexDBTest {
     private Context appContext;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         appContext = InstrumentationRegistry.getTargetContext();
         assertEquals("com.datex.datex", appContext.getPackageName());
         DatexDataSource dataSource = new DatexDataSource(appContext);
         dataSource.open();
-        //dataSource.reset();
+        dataSource.reset();
         dataSource.close();
     }
 
@@ -36,4 +37,27 @@ public class DatexDBTest {
         assertTrue(database.isOpen());
         database.close();
     }
+
+    @Test
+    public void testPatientsTable() {
+        DatexDataSource dataSource = new DatexDataSource(appContext);
+        dataSource.open();
+        Patient patient = new Patient("John", "Ken", "Snow");
+        assertFalse(patient.validateNulls());
+        patient.setDob("02/05/1880");
+        assertFalse(patient.validateNulls());
+        patient.setSex("M");
+        patient.setAddress("Hola");
+        patient.setStateOfOrigin(1);
+        assertFalse(patient.validateNulls());
+        patient.setPhone("08034993503");
+        assertEquals(1, dataSource.createDatabaseObject(patient));
+        assertEquals(1, dataSource.getPatientsCount());
+        assertEquals(-1, dataSource.createDatabaseObject(patient));
+        patient.setPhone("09034993502");
+        assertEquals(2, dataSource.createDatabaseObject(patient));
+        assertEquals(2, dataSource.getPatientsCount());
+        dataSource.close();
+    }
+
 }

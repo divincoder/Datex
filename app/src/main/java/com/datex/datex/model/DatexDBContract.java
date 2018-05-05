@@ -16,7 +16,7 @@ class DatexDBContract {
         static String SEX = "sex VARCHAR(1) NOT NULL";
         static String ADDRESS = "address VARCHAR(50)";
         static String STATE_OF_ORIGIN = "state_of_origin INTEGER NOT NULL";
-        static String PHONE_NO = "phone_no VARCHAR(15) NOT NULL";
+        static String PHONE_NO = "phone_no VARCHAR(15) UNIQUE NOT NULL";
         static int ID_INDEX = 0;
         static int FIRST_NAME_INDEX = 1;
         static int MIDDLE_NAME_INDEX = 2;

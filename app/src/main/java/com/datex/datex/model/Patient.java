@@ -86,6 +86,7 @@ public class Patient implements DatabaseObject {
         cv.put(DBContract.getName(Patients.SEX), sex);
         cv.put(DBContract.getName(Patients.ADDRESS), address);
         cv.put(DBContract.getName(Patients.STATE_OF_ORIGIN), stateOfOrigin);
+        cv.put(DBContract.getName(Patients.PHONE_NO), phone);
         return cv;
     }
 
@@ -116,8 +117,8 @@ public class Patient implements DatabaseObject {
 
     @Override
     public boolean validateNulls() {
-        String[] notNulls = {firstName, lastName, dob, sex};
-        DB_INPUT[] pointers = {DB_INPUT.FIRST_NAME, DB_INPUT.LAST_NAME, DB_INPUT.DOB, DB_INPUT.SEX};
+        String[] notNulls = {firstName, lastName, dob, sex, phone};
+        DB_INPUT[] pointers = {DB_INPUT.FIRST_NAME, DB_INPUT.LAST_NAME, DB_INPUT.DOB, DB_INPUT.SEX, DB_INPUT.PHONE};
         boolean valid = true;
 
         for (int x = 0; x < notNulls.length; x++) {

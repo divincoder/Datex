@@ -12,7 +12,7 @@ import com.datex.datex.model.DatexDBContract.*;
 
 public class DatexOpenHelper extends SQLiteOpenHelper {
 
-    private static final int database_version = 4;
+    private static final int database_version = 5;
 
     public DatexOpenHelper(Context context) {
         super(context, "datex.db", null, database_version);

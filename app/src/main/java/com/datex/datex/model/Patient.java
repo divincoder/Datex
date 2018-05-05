@@ -38,6 +38,18 @@ public class Patient implements DatabaseObject {
         return dob;
     }
 
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getMiddleName() {
+        return middleName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
     public void setDob(String dob) {
         this.dob = dob;
     }

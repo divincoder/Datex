@@ -57,6 +57,8 @@ public class DatexDBTest {
         patient.setPhone("09034993502");
         assertEquals(2, dataSource.createDatabaseObject(patient));
         assertEquals(2, dataSource.getPatientsCount());
+        patient = dataSource.getPatient(1);
+        assertEquals("John", patient.getFirstName());
         dataSource.close();
     }
 

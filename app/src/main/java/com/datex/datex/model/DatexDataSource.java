@@ -46,7 +46,7 @@ public class DatexDataSource {
      *
      * creates a database object. how and where the data is created is handled by the object passed.
      *
-     * @param object an objec that implements the DataBaseObject interface.
+     * @param object an object that implements the DataBaseObject interface.
      * @return id of newly created record in the database.
      */
     public long createDatabaseObject(DatabaseObject object) {

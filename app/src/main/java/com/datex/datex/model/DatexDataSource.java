@@ -45,8 +45,8 @@ public class DatexDataSource {
         return database.insert(object.getTableName(), null, object.getContentValues()) != -1;
     }
 
-    public Patient getPatient(String id) {
-        Cursor cursor = database.query(Patients.TABLE_NAME, null, DBContract.getName(Patients.ID) + " = ?", new String[] {id}, null, null, null);
+    public Patient getPatient(int id) {
+        Cursor cursor = database.query(Patients.TABLE_NAME, null, DBContract.getName(Patients.ID) + " = ?", new String[] {String.valueOf(id)}, null, null, null);
         if (cursor.moveToFirst()) {
             Patient patient = new Patient(cursor.getInt(Patients.ID_INDEX), cursor.getString(Patients.FIRST_NAME_INDEX),
                     cursor.getString(Patients.MIDDLE_NAME_INDEX), cursor.getString(Patients.LAST_NAME_INDEX));
@@ -70,6 +70,7 @@ public class DatexDataSource {
      * @return A GlycemicData object belonging to the given patient id.
      */
     public GlycemicData getGlycemicData(int patientId) {
+        Cursor cursor = database.query(GlycemicDataTable.TABLE_NAME, null, DBContract.getName(GlycemicDataTable.PATIENT_ID) + " = ?", new String[] {String.valueOf(patientId)}, null, null, null);
         return null;
     }
 

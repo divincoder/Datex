@@ -14,7 +14,7 @@ public class DatexOpenHelper extends SQLiteOpenHelper {
 
     private static final int database_version = 4;
 
-    DatexOpenHelper(Context context) {
+    public DatexOpenHelper(Context context) {
         super(context, "datex.db", null, database_version);
     }
 

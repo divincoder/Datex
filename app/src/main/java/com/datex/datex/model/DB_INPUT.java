@@ -10,7 +10,10 @@ public enum DB_INPUT {
     LAST_NAME("last_name"),
     SEX("sex"),
     DOB("DOB"),
-    STATE_OF_ORIGIN("state_");
+    STATE_OF_ORIGIN("state"),
+    BMI("bmi"),
+    RBG("rbg"),
+    HBA1C("hba1c");
 
     String value;
 

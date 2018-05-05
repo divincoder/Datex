@@ -32,11 +32,11 @@ class DatexDBContract {
     static class GlycemicDataTable {
         static String TABLE_NAME = "glycemic_data";
         static String ID = "_id INTEGER PRIMARY KEY";
-        static String PATIENT_ID = "patient_id INTEGER NOT NULL";
+        static String PATIENT_ID = "patient_id INTEGER UNIQUE NOT NULL";
         static String BMI = "bmi TEXT NOT NULL";
         static String RBG = "rbg TEXT NOT NULL";
         static String HBA1C = "hba1c TEXT NOT NULL";
-        static String MEDICATION = "medication TEXT NOT NULL";
+        static String MEDICATION = "medication TEXT";
         static String LAST_UPDATE_TIME = "last_update_time VARCHAR(19)";
         static int ID_INDEX = 0;
         static int PATIENT_ID_INDEX = 1;
@@ -52,7 +52,7 @@ class DatexDBContract {
     static class CoronaryRiskFactorTable {
         static String TABLE_NAME = "coronary_risk_factor";
         static String ID = "_id INTEGER PRIMARY KEY";
-        static String PATIENT_ID = "patient_id INTEGER NOT NULL";
+        static String PATIENT_ID = "patient_id INTEGER UNIQUE NOT NULL";
         static String TOTAL_CHOLESTEROL = "total_cholesterol INTEGER NOT NULL";
         static String TRYGLYCERIDES = "tryglycerides TEXT NOT NULL";
         static String HDL_C = "hdl_c TEXT NOT NULL";

@@ -62,4 +62,15 @@ public class DatexDataSource {
         return null;
     }
 
+    /**
+     *
+     * gets the ID of the patient this glycemic data is associated with.
+     *
+     * @param patientId The id of the patient this glycemic data belongs to.
+     * @return A GlycemicData object belonging to the given patient id.
+     */
+    public GlycemicData getGlycemicData(int patientId) {
+        return null;
+    }
+
 }

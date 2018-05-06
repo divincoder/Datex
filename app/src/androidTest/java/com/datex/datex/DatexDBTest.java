@@ -19,6 +19,7 @@ import org.junit.runner.RunWith;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
@@ -50,7 +51,7 @@ public class DatexDBTest {
         dataSource.open();
         Patient patient = new Patient("John", "Ken", "Snow");
         assertFalse(patient.validateNulls());
-        patient.setDob("02/05/1880");
+        patient.setDob("01/01/1880");
         assertFalse(patient.validateNulls());
         patient.setSex("M");
         patient.setAddress("Hola");
@@ -64,14 +65,14 @@ public class DatexDBTest {
         assertEquals(2, dataSource.createDatabaseObject(patient));
         assertEquals(2, dataSource.getPatientsCount());
         patient = dataSource.getPatient(1);
-        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd", Locale.getDefault());
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
         Date date = new Date();
         Log.d("Datex", "Patient Created On: " + dateFormat.format(date));
         assertEquals(dateFormat.format(date), patient.getDateCreated());
         assertEquals("John", patient.getFirstName());
         assertEquals("Ken", patient.getMiddleName());
         assertEquals("Snow", patient.getLastName());
-        assertEquals("02/05/1880", patient.getDob());
+        assertEquals("01/01/1880", patient.getDob());
         assertEquals("M", patient.getSex());
         assertEquals(1, patient.getStateOfOrigin());
         assertEquals("08034993503", patient.getPhone());
@@ -79,10 +80,15 @@ public class DatexDBTest {
         assertEquals("John", patient.getFirstName());
         assertEquals("Ken", patient.getMiddleName());
         assertEquals("Snow", patient.getLastName());
-        assertEquals("02/05/1880", patient.getDob());
+        assertEquals("01/01/1880", patient.getDob());
         assertEquals("M", patient.getSex());
         assertEquals(1, patient.getStateOfOrigin());
         assertEquals("09034993502", patient.getPhone());
+        Calendar calendar = Calendar.getInstance();
+        if (calendar.get(Calendar.YEAR) == 2018) {
+            assertEquals(138, patient.getAge());
+            Log.d("Datex", "getAge Tested.");
+        }
         dataSource.close();
     }
 

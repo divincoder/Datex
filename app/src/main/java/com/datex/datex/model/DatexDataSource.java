@@ -55,8 +55,8 @@ public class DatexDataSource {
      * @return id of newly created record in the database.
      */
     public long createDatabaseObject(DatabaseObject object) {
-        if (!object.getTableName().equals(DBContract.getName(DiagnosisTable.TABLE_NAME))) {
-            DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd", Locale.getDefault());
+        if (!object.getTableName().equals(DiagnosisTable.TABLE_NAME)) {
+            DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
             Date date = new Date();
             if (object.getTableName().equals(Patients.TABLE_NAME)) {
                 object.setField(DBContract.getName(Patients.DATE_CREATED), dateFormat.format(date));

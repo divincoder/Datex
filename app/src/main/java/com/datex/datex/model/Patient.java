@@ -4,6 +4,8 @@ import android.content.ContentValues;
 
 import com.datex.datex.model.DatexDBContract.*;
 
+import java.util.Calendar;
+
 /**
  * Created by Francis Ilechukwu 11/04/2018.
  */
@@ -85,6 +87,22 @@ public class Patient implements DatabaseObject {
 
     public void setStateOfOrigin(int stateOfOrigin) {
         this.stateOfOrigin = stateOfOrigin;
+    }
+
+    public int getAge() {
+        Calendar today = Calendar.getInstance();
+        int day = Integer.valueOf(dob.substring(0, dob.indexOf("/")));
+        int month = Integer.valueOf(dob.substring(dob.indexOf("/") + 1, dob.indexOf("/", dob.indexOf("/") + 1)));
+        int year = Integer.valueOf(dob.substring(dob.lastIndexOf("/") + 1, dob.length()));
+        int age = today.get(Calendar.YEAR) -  year;
+        if (month > 1 + today.get(Calendar.MONTH)) {
+            --age;
+        } else if (month == 1 + today.get(Calendar.MONTH)) {
+            if (day > today.get(Calendar.DAY_OF_MONTH)) {
+                --age;
+            }
+        }
+        return age;
     }
 
     public String getDateCreated() {

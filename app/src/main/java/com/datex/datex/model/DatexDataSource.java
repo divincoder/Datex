@@ -11,6 +11,7 @@ import com.datex.datex.model.DatexDBContract.*;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
 
@@ -150,6 +151,16 @@ public class DatexDataSource {
         }
         cursor.close();
         return "";
+    }
+
+    public ArrayList<Diagnosis> getAllDiagnosis() {
+        Cursor cursor = database.query(DiagnosisTable.TABLE_NAME, null, null, null, null, null, null);
+        ArrayList<Diagnosis> allDiagnosis = new ArrayList<>();
+        if (cursor.moveToFirst()) {
+            allDiagnosis.add(new Diagnosis(cursor.getInt(DiagnosisTable.ID_INDEX), cursor.getString(DiagnosisTable.NAME_INDEX)));
+        }
+        cursor.close();
+        return allDiagnosis;
     }
 
     /**

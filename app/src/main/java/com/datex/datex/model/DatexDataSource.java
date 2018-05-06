@@ -55,10 +55,16 @@ public class DatexDataSource {
      * @return id of newly created record in the database.
      */
     public long createDatabaseObject(DatabaseObject object) {
-        if (object.getTableName().equals(Patients.TABLE_NAME)) {
+        if (!object.getTableName().equals(DBContract.getName(DiagnosisTable.TABLE_NAME))) {
             DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd", Locale.getDefault());
             Date date = new Date();
-            object.setField(DBContract.getName(Patients.DATE_CREATED), dateFormat.format(date));
+            if (object.getTableName().equals(Patients.TABLE_NAME)) {
+                object.setField(DBContract.getName(Patients.DATE_CREATED), dateFormat.format(date));
+            } else if (object.getTableName().equals(GlycemicDataTable.TABLE_NAME)) {
+                object.setField(DBContract.getName(GlycemicDataTable.LAST_UPDATE_TIME), dateFormat.format(date));
+            } else if (object.getTableName().equals(CoronaryRiskFactorTable.TABLE_NAME)) {
+                object.setField(DBContract.getName(CoronaryRiskFactorTable.LAST_UPDATE_TIME), dateFormat.format(date));
+            }
         }
         return database.insert(object.getTableName(), null, object.getContentValues());
     }

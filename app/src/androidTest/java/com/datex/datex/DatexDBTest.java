@@ -9,12 +9,18 @@ import com.datex.datex.model.Patient;
 
 import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
+import android.util.Log;
 
 import static org.junit.Assert.*;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 @RunWith(AndroidJUnit4.class)
 public class DatexDBTest {
@@ -58,6 +64,10 @@ public class DatexDBTest {
         assertEquals(2, dataSource.createDatabaseObject(patient));
         assertEquals(2, dataSource.getPatientsCount());
         patient = dataSource.getPatient(1);
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd", Locale.getDefault());
+        Date date = new Date();
+        Log.d("Datex", "Patient Created On: " + dateFormat.format(date));
+        assertEquals(dateFormat.format(date), patient.getDateCreated());
         assertEquals("John", patient.getFirstName());
         assertEquals("Ken", patient.getMiddleName());
         assertEquals("Snow", patient.getLastName());

@@ -73,6 +73,7 @@ public class DatexDataSource {
             patient.setSex(cursor.getString(Patients.SEX_INDEX));
             patient.setStateOfOrigin(cursor.getInt(Patients.STATE_OF_ORIGIN_INDEX));
             patient.setPhone(cursor.getString(Patients.PHONE_NO_INDEX));
+            patient.setDateCreated(cursor.getString(Patients.DATE_CREATED_INDEX));
             cursor.close();
             return patient;
         }

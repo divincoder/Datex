@@ -141,6 +141,17 @@ public class DatexDataSource {
         return null;
     }
 
+    public String getDiagnosisName(int id) {
+        Cursor cursor = database.query(DiagnosisTable.TABLE_NAME, null, DBContract.getName(DiagnosisTable.ID) + " = ?", new String[] {String.valueOf(id)}, null, null, null);
+        if (cursor.moveToFirst()) {
+            String diagnosis = cursor.getString(DiagnosisTable.NAME_INDEX);
+            cursor.close();
+            return diagnosis;
+        }
+        cursor.close();
+        return "";
+    }
+
     /**
      *
      * PLEASE DO NOT IN ANY WAY EVER CALL THIS FUNCTION!!!!!!!!!!

@@ -118,7 +118,9 @@ public class GlycemicData implements DatabaseObject {
 
     @Override
     public void setField(String field, String value) {
-
+        if (field.equals(DBContract.getName(GlycemicDataTable.LAST_UPDATE_TIME))) {
+            lastUpdateTime = value;
+        }
     }
 
     @Override
@@ -147,7 +149,7 @@ public class GlycemicData implements DatabaseObject {
         if (patientId == 0) {
             valid = false;
             if (listener != null) {
-                listener.onCatchNull(DB_INPUT.STATE_OF_ORIGIN);
+                listener.onCatchNull(DB_INPUT.PATIENT_ID);
             }
         }
         return valid;

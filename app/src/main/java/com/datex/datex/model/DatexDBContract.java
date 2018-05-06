@@ -40,7 +40,7 @@ class DatexDBContract {
         static String HBA1C = "hba1c TEXT NOT NULL";
         static String MEDICATION = "medication TEXT";
         static String DIAGNOSIS_ID = "diagnosis_id INTEGER";
-        static String LAST_UPDATE_TIME = "last_update_time VARCHAR(19)";
+        static String LAST_UPDATE_TIME = "last_update_time VARCHAR(19) NOT NULL";
         static int ID_INDEX = 0;
         static int PATIENT_ID_INDEX = 1;
         static int BMI_INDEX = 2;
@@ -62,7 +62,7 @@ class DatexDBContract {
         static String HDL_C = "hdl_c TEXT NOT NULL";
         static String LDL_C = "ldl_c TEXT NOT NULL";
         static String BP = "bp TEXT NOT NULL";
-        static String LAST_UPDATE_TIME = "last_update_time VARCHAR(19)";
+        static String LAST_UPDATE_TIME = "last_update_time VARCHAR(19) NOT NULL";
         static int ID_INDEX = 0;
         static int PATIENT_ID_INDEX = 1;
         static int TOTAL_CHOLESTEROL_INDEX = 2;

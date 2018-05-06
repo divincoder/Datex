@@ -18,6 +18,7 @@ public class Patient implements DatabaseObject {
     private String sex;
     private String address;
     private String phone;
+    private String dateCreated;
     private int stateOfOrigin;
     private ValidationListener listener;
 
@@ -86,7 +87,13 @@ public class Patient implements DatabaseObject {
         this.stateOfOrigin = stateOfOrigin;
     }
 
+    public String getDateCreated() {
+        return dateCreated;
+    }
 
+    public void setDateCreated(String dateCreated) {
+        this.dateCreated = dateCreated;
+    }
 
     @Override
     public ContentValues getContentValues() {
@@ -99,6 +106,7 @@ public class Patient implements DatabaseObject {
         cv.put(DBContract.getName(Patients.ADDRESS), address);
         cv.put(DBContract.getName(Patients.STATE_OF_ORIGIN), stateOfOrigin);
         cv.put(DBContract.getName(Patients.PHONE_NO), phone);
+        cv.put(DBContract.getName(Patients.DATE_CREATED), dateCreated);
         return cv;
     }
 
@@ -120,6 +128,13 @@ public class Patient implements DatabaseObject {
     @Override
     public void setField(String field, int value) {
 
+    }
+
+    @Override
+    public void setField(String field, String value) {
+        if (field.equals(DBContract.getName(Patients.DATE_CREATED))) {
+            dateCreated = value;
+        }
     }
 
     @Override

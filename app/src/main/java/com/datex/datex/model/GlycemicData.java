@@ -117,6 +117,11 @@ public class GlycemicData implements DatabaseObject {
     }
 
     @Override
+    public void setField(String field, String value) {
+
+    }
+
+    @Override
     public String getField(String field) {
         return null;
     }

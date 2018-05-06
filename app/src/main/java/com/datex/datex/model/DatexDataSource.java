@@ -8,6 +8,11 @@ import android.database.sqlite.SQLiteException;
 
 import com.datex.datex.model.DatexDBContract.*;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 /**
  * Created by Francis Ilechukwu 11/04/2018.
  */
@@ -50,6 +55,11 @@ public class DatexDataSource {
      * @return id of newly created record in the database.
      */
     public long createDatabaseObject(DatabaseObject object) {
+        if (object.getTableName().equals(Patients.TABLE_NAME)) {
+            DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd", Locale.getDefault());
+            Date date = new Date();
+            object.setField(DBContract.getName(Patients.DATE_CREATED), dateFormat.format(date));
+        }
         return database.insert(object.getTableName(), null, object.getContentValues());
     }
 

@@ -17,6 +17,7 @@ class DatexDBContract {
         static String ADDRESS = "address VARCHAR(50)";
         static String STATE_OF_ORIGIN = "state_of_origin INTEGER NOT NULL";
         static String PHONE_NO = "phone_no VARCHAR(15) UNIQUE NOT NULL";
+        static String DATE_CREATED = "created_date VARCHAR(10) NOT NULL";
         static int ID_INDEX = 0;
         static int FIRST_NAME_INDEX = 1;
         static int MIDDLE_NAME_INDEX = 2;
@@ -26,7 +27,8 @@ class DatexDBContract {
         static int ADDRESS_INDEX = 6;
         static int STATE_OF_ORIGIN_INDEX = 7;
         static int PHONE_NO_INDEX = 8;
-        static String[] CONFIG = {ID, FIRST_NAME, MIDDLE_NAME, LAST_NAME, DOB, SEX, ADDRESS, STATE_OF_ORIGIN, PHONE_NO};
+        static int DATE_CREATED_INDEX = 9;
+        static String[] CONFIG = {ID, FIRST_NAME, MIDDLE_NAME, LAST_NAME, DOB, SEX, ADDRESS, STATE_OF_ORIGIN, PHONE_NO, DATE_CREATED};
     }
 
     static class GlycemicDataTable {
@@ -46,7 +48,7 @@ class DatexDBContract {
         static int HBA1C_INDEX = 4;
         static int MEDICATION_INDEX = 5;
         static int DIAGNOSIS_ID_INDEX = 6;
-        static int LAST_UPDATE_TIME_INDEX = 6;
+        static int LAST_UPDATE_TIME_INDEX = 7;
         // TODO: FOREIGN KEYS HERE.
         static String[] CONFIG = {ID, PATIENT_ID, BMI, RBG, HBA1C, MEDICATION, DIAGNOSIS_ID, LAST_UPDATE_TIME};
     }

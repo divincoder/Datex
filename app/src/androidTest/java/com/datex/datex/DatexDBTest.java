@@ -59,6 +59,20 @@ public class DatexDBTest {
         assertEquals(2, dataSource.getPatientsCount());
         patient = dataSource.getPatient(1);
         assertEquals("John", patient.getFirstName());
+        assertEquals("Ken", patient.getMiddleName());
+        assertEquals("Snow", patient.getLastName());
+        assertEquals("02/05/1880", patient.getDob());
+        assertEquals("M", patient.getSex());
+        assertEquals(1, patient.getStateOfOrigin());
+        assertEquals("08034993503", patient.getPhone());
+        patient = dataSource.getPatient(2);
+        assertEquals("John", patient.getFirstName());
+        assertEquals("Ken", patient.getMiddleName());
+        assertEquals("Snow", patient.getLastName());
+        assertEquals("02/05/1880", patient.getDob());
+        assertEquals("M", patient.getSex());
+        assertEquals(1, patient.getStateOfOrigin());
+        assertEquals("09034993502", patient.getPhone());
         dataSource.close();
     }
 

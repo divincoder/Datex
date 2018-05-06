@@ -5,6 +5,7 @@ import android.database.Cursor;
 import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
+import android.support.annotation.Nullable;
 
 import com.datex.datex.model.DatexDBContract.*;
 
@@ -104,6 +105,7 @@ public class DatexDataSource {
      * @param patientId The id of the patient this glycemic data belongs to.
      * @return A GlycemicData object belonging to the given patient id.
      */
+    @Nullable
     public GlycemicData getGlycemicData(int patientId) {
         Cursor cursor = database.query(GlycemicDataTable.TABLE_NAME, null, DBContract.getName(GlycemicDataTable.PATIENT_ID) + " = ?", new String[] {String.valueOf(patientId)}, null, null, null);
         if (cursor.moveToFirst()) {
@@ -116,6 +118,24 @@ public class DatexDataSource {
             glycemicData.setDiagnosisId(cursor.getInt(GlycemicDataTable.DIAGNOSIS_ID_INDEX));
             cursor.close();
             return glycemicData;
+        }
+        cursor.close();
+        return null;
+    }
+
+    @Nullable
+    public CoronaryRiskFactor getCoronaryRiskFactor(int patientId) {
+        Cursor cursor = database.query(CoronaryRiskFactorTable.TABLE_NAME, null, DBContract.getName(CoronaryRiskFactorTable.PATIENT_ID) + " = ?", new String[] {String.valueOf(patientId)}, null, null, null);
+        if (cursor.moveToFirst()) {
+            CoronaryRiskFactor coronaryRiskFactor = new CoronaryRiskFactor(cursor.getInt(CoronaryRiskFactorTable.ID_INDEX), cursor.getInt(CoronaryRiskFactorTable.PATIENT_ID_INDEX));
+            coronaryRiskFactor.setBp(cursor.getString(CoronaryRiskFactorTable.BP_INDEX));
+            coronaryRiskFactor.setHdlC(cursor.getString(CoronaryRiskFactorTable.HDL_C_INDEX));
+            coronaryRiskFactor.setLastUpdateTime(cursor.getString(CoronaryRiskFactorTable.LAST_UPDATE_TIME_INDEX));
+            coronaryRiskFactor.setLdlC(cursor.getString(CoronaryRiskFactorTable.LDL_C_INDEX));
+            coronaryRiskFactor.setTotalCholesterol(cursor.getInt(CoronaryRiskFactorTable.TOTAL_CHOLESTEROL_INDEX));
+            coronaryRiskFactor.setTryglycerides(cursor.getString(CoronaryRiskFactorTable.TRYGLYCERIDES_INDEX));
+            cursor.close();
+            return coronaryRiskFactor;
         }
         cursor.close();
         return null;

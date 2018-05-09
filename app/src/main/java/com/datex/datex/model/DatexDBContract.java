@@ -7,7 +7,7 @@ package com.datex.datex.model;
 class DatexDBContract {
 
     static class Patients {
-        static String TABLE_NAME = "new_course_registrations";
+        static String TABLE_NAME = "patients";
         static String ID = "_id INTEGER PRIMARY KEY";
         static String FIRST_NAME = "first_name VARCHAR(30) NOT NULL";
         static String MIDDLE_NAME = "middle_name VARCHAR(30)";
@@ -16,6 +16,8 @@ class DatexDBContract {
         static String SEX = "sex VARCHAR(1) NOT NULL";
         static String ADDRESS = "address VARCHAR(50)";
         static String STATE_OF_ORIGIN = "state_of_origin INTEGER NOT NULL";
+        static String PHONE_NO = "phone_no VARCHAR(15) UNIQUE NOT NULL";
+        static String DATE_CREATED = "created_date VARCHAR(10) NOT NULL";
         static int ID_INDEX = 0;
         static int FIRST_NAME_INDEX = 1;
         static int MIDDLE_NAME_INDEX = 2;
@@ -24,7 +26,63 @@ class DatexDBContract {
         static int SEX_INDEX = 5;
         static int ADDRESS_INDEX = 6;
         static int STATE_OF_ORIGIN_INDEX = 7;
-        static String[] CONFIG = {ID, FIRST_NAME, MIDDLE_NAME, LAST_NAME, DOB, SEX, ADDRESS, STATE_OF_ORIGIN};
+        static int PHONE_NO_INDEX = 8;
+        static int DATE_CREATED_INDEX = 9;
+        static String[] CONFIG = {ID, FIRST_NAME, MIDDLE_NAME, LAST_NAME, DOB, SEX, ADDRESS, STATE_OF_ORIGIN, PHONE_NO, DATE_CREATED};
+    }
+
+    static class GlycemicDataTable {
+        static String TABLE_NAME = "glycemic_data";
+        static String ID = "_id INTEGER PRIMARY KEY";
+        static String PATIENT_ID = "patient_id INTEGER UNIQUE NOT NULL";
+        static String BMI = "bmi TEXT NOT NULL";
+        static String RBG = "rbg TEXT NOT NULL";
+        static String HBA1C = "hba1c TEXT NOT NULL";
+        static String MEDICATION = "medication TEXT";
+        static String DIAGNOSIS_ID = "diagnosis_id INTEGER";
+        static String LAST_UPDATE_TIME = "last_update_time VARCHAR(19) NOT NULL";
+        static int ID_INDEX = 0;
+        static int PATIENT_ID_INDEX = 1;
+        static int BMI_INDEX = 2;
+        static int RBG_INDEX = 3;
+        static int HBA1C_INDEX = 4;
+        static int MEDICATION_INDEX = 5;
+        static int DIAGNOSIS_ID_INDEX = 6;
+        static int LAST_UPDATE_TIME_INDEX = 7;
+        // TODO: FOREIGN KEYS HERE.
+        static String[] CONFIG = {ID, PATIENT_ID, BMI, RBG, HBA1C, MEDICATION, DIAGNOSIS_ID, LAST_UPDATE_TIME};
+    }
+
+    static class CoronaryRiskFactorTable {
+        static String TABLE_NAME = "coronary_risk_factor";
+        static String ID = "_id INTEGER PRIMARY KEY";
+        static String PATIENT_ID = "patient_id INTEGER UNIQUE NOT NULL";
+        static String TOTAL_CHOLESTEROL = "total_cholesterol INTEGER NOT NULL";
+        static String TRYGLYCERIDES = "tryglycerides TEXT NOT NULL";
+        static String HDL_C = "hdl_c TEXT NOT NULL";
+        static String LDL_C = "ldl_c TEXT NOT NULL";
+        static String BP = "bp TEXT NOT NULL";
+        static String LAST_UPDATE_TIME = "last_update_time VARCHAR(19) NOT NULL";
+        static int ID_INDEX = 0;
+        static int PATIENT_ID_INDEX = 1;
+        static int TOTAL_CHOLESTEROL_INDEX = 2;
+        static int TRYGLYCERIDES_INDEX = 3;
+        static int HDL_C_INDEX = 4;
+        static int LDL_C_INDEX = 5;
+        static int BP_INDEX = 6;
+        static int LAST_UPDATE_TIME_INDEX = 7;
+        // TODO: FOREIGN KEYS HERE.
+        static String[] CONFIG = {ID, PATIENT_ID, TOTAL_CHOLESTEROL, TRYGLYCERIDES, HDL_C, LDL_C, BP, LAST_UPDATE_TIME};
+    }
+
+    static class DiagnosisTable {
+        static String TABLE_NAME = "diagnosis";
+        static String ID = "_id INTEGER PRIMARY KEY";
+        static String NAME = "name TEXT NOT NULL";
+        static int ID_INDEX = 0;
+        static int NAME_INDEX = 1;
+        // TODO: FOREIGN KEYS HERE.
+        static String[] CONFIG = {ID, NAME};
     }
 
     static class DBContract {

@@ -1,4 +1,4 @@
-package com.datex.datex;
+package com.datex.datex.activity;
 
 /**
  * Created by Francis Ilechukwu 09/04/2018.

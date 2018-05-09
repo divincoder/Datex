@@ -1,10 +1,10 @@
-package com.datex.datex;
+package com.datex.datex.activity;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import com.datex.datex.OnActivityResultContract.*;
+import com.datex.datex.activity.OnActivityResultContract.*;
 
 public class LaunchActivity extends AppCompatActivity {
 

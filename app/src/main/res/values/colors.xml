@@ -4,4 +4,15 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="splash_bg">#7cafba</color>
+    <color name="half_black">#50000000</color>
+
+    <color name="whiteSmoke">#FAFAFB</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#70000000</color>
+    <color name="whiteWithOpacity">#fafafa</color>
+    <color name="light_grey">#eeeeee</color>
+    <color name="all_patients_color">#13d74e</color>
+    <color name="color_new_week">#f13d46</color>
+    <color name="color_male">#28372b</color>
+    <color name="color_female">#050e7c</color>
 </resources>

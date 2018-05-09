@@ -1,0 +1,426 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/bio_data_wrapper"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/light_grey"
+            android:orientation="horizontal">
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="2dp"
+                android:layout_marginTop="15dp"
+                android:layout_weight="1"
+                android:background="@color/colorPrimary" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.3"
+                android:text="@string/label_bio_data"
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimary"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="2dp"
+                android:layout_marginTop="15dp"
+                android:layout_weight="1"
+                android:background="@color/colorPrimary" />
+        </LinearLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/name_text_wrapper"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/content_spacing"
+            android:paddingEnd="@dimen/activity_horizontal_margin"
+            android:paddingStart="@dimen/activity_horizontal_margin"
+            android:textColorHint="@color/half_black">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/name_text_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/name_hint"
+                android:inputType="textAutoComplete|textCapWords"
+                android:textColor="@color/half_black"
+                android:textColorHint="@color/half_black"
+                android:textSize="@dimen/input_field_size">
+
+            </android.support.design.widget.TextInputEditText>
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/age_text_wrapper"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/content_spacing"
+            android:paddingEnd="@dimen/activity_horizontal_margin"
+            android:paddingStart="@dimen/activity_horizontal_margin"
+            android:textColorHint="@color/half_black">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/age_text_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/age_hint"
+                android:inputType="number"
+                android:textColor="@color/half_black"
+                android:textColorHint="@color/half_black"
+                android:textSize="@dimen/input_field_size">
+
+            </android.support.design.widget.TextInputEditText>
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/gender_text_wrapper"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/content_spacing"
+            android:paddingEnd="@dimen/activity_horizontal_margin"
+            android:paddingStart="@dimen/activity_horizontal_margin"
+            android:textColorHint="@color/half_black">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/gender_text_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/sex_hint"
+                android:inputType="number"
+                android:textColor="@color/half_black"
+                android:textColorHint="@color/half_black"
+                android:textSize="@dimen/input_field_size">
+
+            </android.support.design.widget.TextInputEditText>
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/contact_text_wrapper"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/content_spacing"
+            android:layout_marginTop="@dimen/content_spacing"
+            android:paddingEnd="@dimen/activity_horizontal_margin"
+            android:paddingStart="@dimen/activity_horizontal_margin"
+            android:textColorHint="@color/half_black">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/contact_text_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/contact_hint"
+                android:inputType="phone"
+                android:textColor="@color/half_black"
+                android:textColorHint="@color/half_black"
+                android:textSize="@dimen/input_field_size">
+
+            </android.support.design.widget.TextInputEditText>
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.v7.widget.AppCompatSpinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/content_spacing" />
+
+        <!--<fr.ganfra.materialspinner.MaterialSpinner-->
+        <!--android:id="@+id/topup_cycle_spinner"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginEnd="@dimen/activity_horizontal_margin"-->
+        <!--android:layout_marginStart="5dp"-->
+        <!--android:paddingBottom="10dp"-->
+        <!--android:paddingTop="10dp"-->
+        <!--app:ms_alignLabels="false"-->
+        <!--app:ms_arrowColor="@color/materialSpinnerColor"-->
+        <!--app:ms_baseColor="@color/half_black"-->
+        <!--app:ms_enableErrorLabel="false"-->
+        <!--app:ms_enableFloatingLabel="true"-->
+        <!--app:ms_floatingLabelColor="@color/materialSpinnerColor"-->
+        <!--app:ms_hint="@string/topup_cycle_prompt"-->
+        <!--app:ms_hintColor="@color/half_black"-->
+        <!--app:ms_hintView="@layout/spinner_item" />-->
+
+        <LinearLayout
+            android:id="@+id/glycemic_data_wrapper"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/light_grey"
+            android:orientation="horizontal">
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="2dp"
+                android:layout_marginTop="15dp"
+                android:layout_weight="1"
+                android:background="@color/colorPrimary" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.3"
+                android:text="@string/label_glycemic_data"
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimary"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="2dp"
+                android:layout_marginTop="15dp"
+                android:layout_weight="1"
+                android:background="@color/colorPrimary" />
+        </LinearLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/BMI_text_wrapper"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/content_spacing"
+            android:paddingEnd="@dimen/activity_horizontal_margin"
+            android:paddingStart="@dimen/activity_horizontal_margin"
+            android:textColorHint="@color/half_black">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/BMI_text_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/BMI_hint"
+                android:inputType="textAutoComplete|textCapWords"
+                android:textColor="@color/half_black"
+                android:textColorHint="@color/half_black"
+                android:textSize="@dimen/input_field_size">
+
+            </android.support.design.widget.TextInputEditText>
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/RBG_text_wrapper"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/content_spacing"
+            android:paddingEnd="@dimen/activity_horizontal_margin"
+            android:paddingStart="@dimen/activity_horizontal_margin"
+            android:textColorHint="@color/half_black">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/RBG_text_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/RBG_hint"
+                android:inputType="textAutoComplete|textCapWords"
+                android:textColor="@color/half_black"
+                android:textColorHint="@color/half_black"
+                android:textSize="@dimen/input_field_size">
+
+            </android.support.design.widget.TextInputEditText>
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/medication_text_wrapper"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/content_spacing"
+            android:paddingEnd="@dimen/activity_horizontal_margin"
+            android:paddingStart="@dimen/activity_horizontal_margin"
+            android:textColorHint="@color/half_black">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/medication_text_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/medication_hint"
+                android:inputType="textAutoComplete|textCapWords"
+                android:textColor="@color/half_black"
+                android:textColorHint="@color/half_black"
+                android:textSize="@dimen/input_field_size">
+
+            </android.support.design.widget.TextInputEditText>
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/HbA1c_text_wrapper"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/content_spacing"
+            android:paddingEnd="@dimen/activity_horizontal_margin"
+            android:paddingStart="@dimen/activity_horizontal_margin"
+            android:textColorHint="@color/half_black">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/HbA1c_text_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/hba1c_hint"
+                android:inputType="textAutoComplete|textCapWords"
+                android:textColor="@color/half_black"
+                android:textColorHint="@color/half_black"
+                android:textSize="@dimen/input_field_size">
+
+            </android.support.design.widget.TextInputEditText>
+        </android.support.design.widget.TextInputLayout>
+
+        <!--<Button-->
+        <!--android:id="@+id/next_button"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_margin="@dimen/content_spacing"-->
+        <!--android:textColor="@color/white"-->
+        <!--android:textSize="20sp"-->
+        <!--android:textStyle="bold"-->
+        <!--android:layout_gravity="end"-->
+        <!--android:padding="@dimen/content_spacing"-->
+        <!--android:background="@color/colorPrimaryDark"-->
+        <!--android:text="@string/label_next"/>-->
+        <!---->
+        <LinearLayout
+            android:id="@+id/coronary_risk_wrapper"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:background="@color/light_grey"
+            android:orientation="horizontal">
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="2dp"
+                android:layout_marginTop="15dp"
+                android:layout_weight="1"
+                android:background="@color/colorPrimary" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.3"
+                android:text="@string/coronary_risk_factors"
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimary"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="2dp"
+                android:layout_marginTop="15dp"
+                android:layout_weight="1"
+                android:background="@color/colorPrimary" />
+        </LinearLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/cholesterol_text_wrapper"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/content_spacing"
+            android:paddingEnd="@dimen/activity_horizontal_margin"
+            android:paddingStart="@dimen/activity_horizontal_margin"
+            android:textColorHint="@color/half_black">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/cholesterol_text_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/total_cholesterol_hint"
+                android:inputType="textAutoComplete|textCapWords"
+                android:textColor="@color/half_black"
+                android:textColorHint="@color/half_black"
+                android:textSize="@dimen/input_field_size">
+
+            </android.support.design.widget.TextInputEditText>
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/hdl_c_text_wrapper"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/content_spacing"
+            android:paddingEnd="@dimen/activity_horizontal_margin"
+            android:paddingStart="@dimen/activity_horizontal_margin"
+            android:textColorHint="@color/half_black">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/hdl_c_text_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/hdl_c_hint"
+                android:inputType="textAutoComplete|textCapWords"
+                android:textColor="@color/half_black"
+                android:textColorHint="@color/half_black"
+                android:textSize="@dimen/input_field_size">
+
+            </android.support.design.widget.TextInputEditText>
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/Ldl_c_text_wrapper"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/content_spacing"
+            android:paddingEnd="@dimen/activity_horizontal_margin"
+            android:paddingStart="@dimen/activity_horizontal_margin"
+            android:textColorHint="@color/half_black">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/Ldl_c_text_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/Ldl_c_hint"
+                android:inputType="textAutoComplete|textCapWords"
+                android:textColor="@color/half_black"
+                android:textColorHint="@color/half_black"
+                android:textSize="@dimen/input_field_size">
+
+            </android.support.design.widget.TextInputEditText>
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/BP_text_wrapper"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/content_spacing"
+            android:paddingEnd="@dimen/activity_horizontal_margin"
+            android:paddingStart="@dimen/activity_horizontal_margin"
+            android:textColorHint="@color/half_black">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/BP_text_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/BP_hint"
+                android:inputType="textAutoComplete|textCapWords"
+                android:textColor="@color/half_black"
+                android:textColorHint="@color/half_black"
+                android:textSize="@dimen/input_field_size">
+
+            </android.support.design.widget.TextInputEditText>
+        </android.support.design.widget.TextInputLayout>
+
+
+        <Button
+            android:id="@+id/submit_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/content_spacing"
+            android:background="@color/colorPrimaryDark"
+            android:padding="@dimen/content_spacing"
+            android:text="@string/label_submit"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+
+    </LinearLayout>
+
+</ScrollView>

@@ -11,6 +11,7 @@ import com.datex.datex.model.DatexDBContract.*;
 public class Patient implements DatabaseObject {
 
     private int id;
+
     private String firstName;
     private String middleName;
     private String lastName;
@@ -33,6 +34,13 @@ public class Patient implements DatabaseObject {
         this.lastName = lastName;
     }
 
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
     public String getDob() {
         return dob;
     }

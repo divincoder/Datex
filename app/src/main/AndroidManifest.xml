@@ -9,14 +9,34 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".LaunchActivity">
+        <activity android:name=".activity.LaunchActivity" />
+        <activity android:name=".MainActivity" />
+        <activity
+            android:name=".activity.NavigationActivity"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"></activity>
+        <activity
+            android:name=".activity.AddPatientActivity"
+            android:label="@string/label_add_patient"
+            android:parentActivityName=".activity.NavigationActivity" />
+        <activity
+            android:name=".activity.AllPatientActivity"
+            android:label="@string/label_all_patients"
+            android:parentActivityName=".activity.NavigationActivity">
+
+        </activity>
+        <activity
+            android:name=".activity.NotificationActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:label="@string/notification_label"
+            android:parentActivityName=".activity.NavigationActivity">
+
+        </activity>
     </application>
 
 </manifest>

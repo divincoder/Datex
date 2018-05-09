@@ -1,3 +1,46 @@
 <resources>
     <string name="app_name">Datex</string>
+    <string name="title_activity_navigation">NavigationActivity</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="label_home">Home</string>
+    <string name="label_all_patients">All Patients</string>
+    <string name="label_reminder">Reminder</string>
+    <string name="label_add_patient">Add Patient</string>\
+    <string name="label_search">Search Patient</string>
+    <string name="label_new_week_entry">New Week Entry</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="label_glycemic_data">Glycemic Data</string>
+    <string name="BMI_hint">BMI</string>
+    <string name="RBG_hint">RBG</string>
+    <string name="medication_hint">Medication</string>
+    <string name="coronary_risk_factors">Coronary Risk Factors</string>
+    <string name="total_cholesterol_hint">Total Cholesterol</string>
+    <string name="label_bio_data">Bio Data</string>
+    <string name="name_hint">Name</string>
+    <string name="age_hint">Age</string>
+    <string name="sex_hint">Gender</string>
+    <string name="contact_hint">Phone Number</string>
+    <string name="label_next">NEXT</string>
+    <string name="hdl_c_hint">HDL-C</string>
+    <string name="Ldl_c_hint">LDL-C</string>
+    <string name="label_submit">Submit</string>
+    <string name="label_previous">Previous</string>
+    <string name="hba1c_hint">HbA1c</string>
+    <string name="BP_hint">Blood Pressure (BP)</string>
+    <string name="title_activity_all_patients">AllPatientsActivity</string>
+    <string name="notification_label">Notification</string>
+    <string name="dummy_female_count">30</string>
+    <string name="dummy_male_count">20</string>
+    <string name="label_new_week_entries">New Week Entries</string>
+    <string name="label_notification">Notification</string>
+
+    <string name="tab_label1">HbAlc</string>
+    <string name="tab_label2">Lipid Profile</string>
+    <string name="tab_label3">Physical Exam</string>
 </resources>

@@ -4,6 +4,8 @@ import android.content.ContentValues;
 
 import com.datex.datex.model.DatexDBContract.*;
 
+import java.util.Calendar;
+
 /**
  * Created by Francis Ilechukwu 11/04/2018.
  */
@@ -17,6 +19,8 @@ public class Patient implements DatabaseObject {
     private String dob;
     private String sex;
     private String address;
+    private String phone;
+    private String dateCreated;
     private int stateOfOrigin;
     private ValidationListener listener;
 
@@ -37,12 +41,32 @@ public class Patient implements DatabaseObject {
         return dob;
     }
 
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getMiddleName() {
+        return middleName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
     public void setDob(String dob) {
         this.dob = dob;
     }
 
     public String getSex() {
         return sex;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public void setSex(String sex) {
@@ -65,7 +89,29 @@ public class Patient implements DatabaseObject {
         this.stateOfOrigin = stateOfOrigin;
     }
 
+    public int getAge() {
+        Calendar today = Calendar.getInstance();
+        int day = Integer.valueOf(dob.substring(0, dob.indexOf("/")));
+        int month = Integer.valueOf(dob.substring(dob.indexOf("/") + 1, dob.indexOf("/", dob.indexOf("/") + 1)));
+        int year = Integer.valueOf(dob.substring(dob.lastIndexOf("/") + 1, dob.length()));
+        int age = today.get(Calendar.YEAR) -  year;
+        if (month > 1 + today.get(Calendar.MONTH)) {
+            --age;
+        } else if (month == 1 + today.get(Calendar.MONTH)) {
+            if (day > today.get(Calendar.DAY_OF_MONTH)) {
+                --age;
+            }
+        }
+        return age;
+    }
 
+    public String getDateCreated() {
+        return dateCreated;
+    }
+
+    public void setDateCreated(String dateCreated) {
+        this.dateCreated = dateCreated;
+    }
 
     @Override
     public ContentValues getContentValues() {
@@ -77,6 +123,8 @@ public class Patient implements DatabaseObject {
         cv.put(DBContract.getName(Patients.SEX), sex);
         cv.put(DBContract.getName(Patients.ADDRESS), address);
         cv.put(DBContract.getName(Patients.STATE_OF_ORIGIN), stateOfOrigin);
+        cv.put(DBContract.getName(Patients.PHONE_NO), phone);
+        cv.put(DBContract.getName(Patients.DATE_CREATED), dateCreated);
         return cv;
     }
 
@@ -101,14 +149,21 @@ public class Patient implements DatabaseObject {
     }
 
     @Override
+    public void setField(String field, String value) {
+        if (field.equals(DBContract.getName(Patients.DATE_CREATED))) {
+            dateCreated = value;
+        }
+    }
+
+    @Override
     public String getField(String field) {
         return null;
     }
 
     @Override
     public boolean validateNulls() {
-        String[] notNulls = {firstName, lastName, dob, sex};
-        DB_INPUT[] pointers = {DB_INPUT.FIRST_NAME, DB_INPUT.LAST_NAME, DB_INPUT.DOB, DB_INPUT.SEX};
+        String[] notNulls = {firstName, lastName, dob, sex, phone};
+        DB_INPUT[] pointers = {DB_INPUT.FIRST_NAME, DB_INPUT.LAST_NAME, DB_INPUT.DOB, DB_INPUT.SEX, DB_INPUT.PHONE};
         boolean valid = true;
 
         for (int x = 0; x < notNulls.length; x++) {

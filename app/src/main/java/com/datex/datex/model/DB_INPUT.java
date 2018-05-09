@@ -10,7 +10,18 @@ public enum DB_INPUT {
     LAST_NAME("last_name"),
     SEX("sex"),
     DOB("DOB"),
-    STATE_OF_ORIGIN("state_");
+    NAME("name"),
+    PHONE("phone"),
+    TRYGLYCERIDES("tryglycerides"),
+    HDLC("hdl_c"),
+    LDLC("ldl_c"),
+    TOTAL_CHOLESTEROL("total_cholesterol"),
+    BP("bp"),
+    PATIENT_ID("patient_id"),
+    STATE_OF_ORIGIN("state"),
+    BMI("bmi"),
+    RBG("rbg"),
+    HBA1C("hba1c");
 
     String value;
 

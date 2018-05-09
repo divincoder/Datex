@@ -17,6 +17,8 @@ interface DatabaseObject {
 
     void setField(String field, int value);
 
+    void setField(String field, String value);
+
     String getField(String field);
 
     boolean validateNulls();

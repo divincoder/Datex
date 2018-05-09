@@ -10,9 +10,9 @@ import com.datex.datex.model.DatexDBContract.*;
  * Created by Francis Ilechukwu 09/04/2018.
  */
 
-public class DatexOpenHelper  extends SQLiteOpenHelper {
+public class DatexOpenHelper extends SQLiteOpenHelper {
 
-    private static final int database_version = 1;
+    private static final int database_version = 7;
 
     public DatexOpenHelper(Context context) {
         super(context, "datex.db", null, database_version);
@@ -26,12 +26,19 @@ public class DatexOpenHelper  extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         // Patients Table.
-        sqLiteDatabase.execSQL(DatexDBContract.DBContract.createTable(Patients.TABLE_NAME, Patients.CONFIG, ""));
+        sqLiteDatabase.execSQL(DBContract.createTable(Patients.TABLE_NAME, Patients.CONFIG, ""));
+        // Diagnosis
+        sqLiteDatabase.execSQL(DBContract.createTable(DiagnosisTable.TABLE_NAME, DiagnosisTable.CONFIG, ""));
+        sqLiteDatabase.execSQL(DBContract.createTable(GlycemicDataTable.TABLE_NAME, GlycemicDataTable.CONFIG, ""));
+        sqLiteDatabase.execSQL(DBContract.createTable(CoronaryRiskFactorTable.TABLE_NAME, CoronaryRiskFactorTable.CONFIG, ""));
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int oldVersion, int newVersion) {
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + Patients.TABLE_NAME);
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + DiagnosisTable.TABLE_NAME);
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + GlycemicDataTable.TABLE_NAME);
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + CoronaryRiskFactorTable.TABLE_NAME);
         onCreate(sqLiteDatabase);
     }
 

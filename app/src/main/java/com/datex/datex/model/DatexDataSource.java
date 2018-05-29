@@ -156,6 +156,18 @@ public class DatexDataSource {
         return contacts;
     }
 
+    public int getPatientCountWithDiagnosis(int diagnosisId) {
+        Cursor cursor = database.rawQuery("SELECT COUNT (*) FROM " + GlycemicDataTable.TABLE_NAME + " WHERE " + DBContract.getName(GlycemicDataTable.DIAGNOSIS_ID) + "=?",
+                new String[] {String.valueOf(diagnosisId)});
+        if (cursor.moveToFirst()) {
+            int count = cursor.getInt(0);
+            cursor.close();
+            return count;
+        }
+        cursor.close();
+        return 0;
+    }
+
     /**
      *
      * gets the number of patient records in the database.

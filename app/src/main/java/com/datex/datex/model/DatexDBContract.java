@@ -99,23 +99,6 @@ class DatexDBContract {
             return sql.toString();
         }
 
-        static String createTable(String name, String[] configs, String[] primaryKeys, String constraints) {
-            StringBuilder sql = new StringBuilder("CREATE TABLE ").append(name).append(" (");
-            for (String column : configs) {
-                sql.append(column).append(", ");
-            }
-            sql.append("PRIMARY KEY (");
-            for (String primaryKey : primaryKeys) {
-                sql.append(getName(primaryKey)).append(", ");
-            }
-            if (!constraints.equals("")) {
-                sql.replace(sql.lastIndexOf(","), sql.lastIndexOf(",") + 2, "), ").append(constraints);
-            } else {
-                sql.replace(sql.lastIndexOf(","), sql.lastIndexOf(",") + 2, "));");
-            }
-            return sql.toString();
-        }
-
         public static String foreign(String column, String table, String tableColumn) {
             column = column.contains(" ") ? getName(column) : column;
             tableColumn = tableColumn.contains(" ") ? getName(tableColumn) : tableColumn;

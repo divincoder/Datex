@@ -72,6 +72,7 @@ public class DatexDataSource {
         return database.insert(object.getTableName(), null, object.getContentValues());
     }
 
+    @Nullable
     public Patient getPatient(int id) {
         Cursor cursor = database.query(Patients.TABLE_NAME, null, DBContract.getName(Patients.ID) + " = ?", new String[] {String.valueOf(id)}, null, null, null);
         if (cursor.moveToFirst()) {
@@ -90,30 +91,20 @@ public class DatexDataSource {
         return null;
     }
 
-    @Nullable
-    public ArrayList<Patient> getMalePatients() {
-        Cursor cursor = database.query(Patients.TABLE_NAME, null, DBContract.getName(Patients.SEX) + " = ?", new String[] {"M"}, null, null, null);
+    public String getPatientContact(int id) {
+        Cursor cursor = database.query(Patients.TABLE_NAME, new String[] {DBContract.getName(Patients.PHONE_NO)}, DBContract.getName(Patients.ID) + " = ?", new String[] {String.valueOf(id)}, null, null, null);
         if (cursor.moveToFirst()) {
-            ArrayList<Patient> patients = new ArrayList<>();
-            do {
-                Patient patient = new Patient(cursor.getInt(Patients.ID_INDEX), cursor.getString(Patients.FIRST_NAME_INDEX),
-                        cursor.getString(Patients.MIDDLE_NAME_INDEX), cursor.getString(Patients.LAST_NAME_INDEX));
-                patient.setAddress(cursor.getString(Patients.ADDRESS_INDEX));
-                patient.setDob(cursor.getString(Patients.DOB_INDEX));
-                patient.setSex(cursor.getString(Patients.SEX_INDEX));
-                patient.setStateOfOrigin(cursor.getInt(Patients.STATE_OF_ORIGIN_INDEX));
-                patient.setPhone(cursor.getString(Patients.PHONE_NO_INDEX));
-                patient.setDateCreated(cursor.getString(Patients.DATE_CREATED_INDEX));
-                patients.add(patient);
-            } while (cursor.moveToNext());
+            String contact = cursor.getString(0);
             cursor.close();
-            return patients;
+            return contact;
         }
+        cursor.close();
         return null;
     }
 
-    public ArrayList<Patient> getAllPatientsWithDiagnosis(int diagnosisId) {
-        Cursor cursor = database.query(Patients.TABLE_NAME, null, DBContract.getName(Patients.SEX) + " = ?", new String[] {"F"}, null, null, null);
+    @Nullable
+    public ArrayList<Patient> getMalePatients() {
+        Cursor cursor = database.query(Patients.TABLE_NAME, null, DBContract.getName(Patients.SEX) + " = ?", new String[] {"M"}, null, null, null);
         if (cursor.moveToFirst()) {
             ArrayList<Patient> patients = new ArrayList<>();
             do {
@@ -153,6 +144,16 @@ public class DatexDataSource {
             return patients;
         }
         return null;
+    }
+
+    public ArrayList<String> getAllContactsForPatientsWithDiagnosis(int diagnosisId) {
+        ArrayList<String> contacts = new ArrayList<>();
+        Cursor cursor = database.query(GlycemicDataTable.TABLE_NAME, new String[] {DBContract.getName(GlycemicDataTable.PATIENT_ID)}, DBContract.getName(GlycemicDataTable.DIAGNOSIS_ID) + " = ?", new String[] {String.valueOf(diagnosisId)}, null, null, null);
+        if (cursor.moveToFirst()) {
+            contacts.add(getPatientContact(cursor.getInt(0)));
+        }
+        cursor.close();
+        return contacts;
     }
 
     /**

@@ -1,5 +1,6 @@
 package com.datex.datex.model;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -27,10 +28,23 @@ public class DatexOpenHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         // Patients Table.
         sqLiteDatabase.execSQL(DBContract.createTable(Patients.TABLE_NAME, Patients.CONFIG, ""));
-        // Diagnosis
+        // Diagnosis Table.
         sqLiteDatabase.execSQL(DBContract.createTable(DiagnosisTable.TABLE_NAME, DiagnosisTable.CONFIG, ""));
+        // Glycemic Data Table.
         sqLiteDatabase.execSQL(DBContract.createTable(GlycemicDataTable.TABLE_NAME, GlycemicDataTable.CONFIG, ""));
+        // Coronary Risk Factor Table.
         sqLiteDatabase.execSQL(DBContract.createTable(CoronaryRiskFactorTable.TABLE_NAME, CoronaryRiskFactorTable.CONFIG, ""));
+
+        /*
+        Insertion Region.
+         */
+        ContentValues diagnosis = new ContentValues();
+        diagnosis.put(DBContract.getName(DiagnosisTable.NAME), "Type 1");
+        sqLiteDatabase.insert(DiagnosisTable.TABLE_NAME, "", diagnosis);
+        diagnosis.put(DBContract.getName(DiagnosisTable.NAME), "Type 2");
+        sqLiteDatabase.insert(DiagnosisTable.TABLE_NAME, "", diagnosis);
+        diagnosis.put(DBContract.getName(DiagnosisTable.NAME), "Gestational Type");
+        sqLiteDatabase.insert(DiagnosisTable.TABLE_NAME, "", diagnosis);
     }
 
     @Override

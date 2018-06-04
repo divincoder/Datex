@@ -81,7 +81,6 @@ class DatexDBContract {
         static String NAME = "name TEXT NOT NULL";
         static int ID_INDEX = 0;
         static int NAME_INDEX = 1;
-        // TODO: FOREIGN KEYS HERE.
         static String[] CONFIG = {ID, NAME};
     }
 

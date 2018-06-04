@@ -13,6 +13,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 /**
@@ -71,6 +72,7 @@ public class DatexDataSource {
         return database.insert(object.getTableName(), null, object.getContentValues());
     }
 
+    @Nullable
     public Patient getPatient(int id) {
         Cursor cursor = database.query(Patients.TABLE_NAME, null, DBContract.getName(Patients.ID) + " = ?", new String[] {String.valueOf(id)}, null, null, null);
         if (cursor.moveToFirst()) {
@@ -87,6 +89,83 @@ public class DatexDataSource {
         }
         cursor.close();
         return null;
+    }
+
+    public String getPatientContact(int id) {
+        Cursor cursor = database.query(Patients.TABLE_NAME, new String[] {DBContract.getName(Patients.PHONE_NO)}, DBContract.getName(Patients.ID) + " = ?", new String[] {String.valueOf(id)}, null, null, null);
+        if (cursor.moveToFirst()) {
+            String contact = cursor.getString(0);
+            cursor.close();
+            return contact;
+        }
+        cursor.close();
+        return null;
+    }
+
+    @Nullable
+    public ArrayList<Patient> getMalePatients() {
+        Cursor cursor = database.query(Patients.TABLE_NAME, null, DBContract.getName(Patients.SEX) + " = ?", new String[] {"M"}, null, null, null);
+        if (cursor.moveToFirst()) {
+            ArrayList<Patient> patients = new ArrayList<>();
+            do {
+                Patient patient = new Patient(cursor.getInt(Patients.ID_INDEX), cursor.getString(Patients.FIRST_NAME_INDEX),
+                        cursor.getString(Patients.MIDDLE_NAME_INDEX), cursor.getString(Patients.LAST_NAME_INDEX));
+                patient.setAddress(cursor.getString(Patients.ADDRESS_INDEX));
+                patient.setDob(cursor.getString(Patients.DOB_INDEX));
+                patient.setSex(cursor.getString(Patients.SEX_INDEX));
+                patient.setStateOfOrigin(cursor.getInt(Patients.STATE_OF_ORIGIN_INDEX));
+                patient.setPhone(cursor.getString(Patients.PHONE_NO_INDEX));
+                patient.setDateCreated(cursor.getString(Patients.DATE_CREATED_INDEX));
+                patients.add(patient);
+            } while (cursor.moveToNext());
+            cursor.close();
+            return patients;
+        }
+        return null;
+    }
+
+    @Nullable
+    public ArrayList<Patient> getFemalePatients() {
+        Cursor cursor = database.query(Patients.TABLE_NAME, null, DBContract.getName(Patients.SEX) + " = ?", new String[] {"F"}, null, null, null);
+        if (cursor.moveToFirst()) {
+            ArrayList<Patient> patients = new ArrayList<>();
+            do {
+                Patient patient = new Patient(cursor.getInt(Patients.ID_INDEX), cursor.getString(Patients.FIRST_NAME_INDEX),
+                        cursor.getString(Patients.MIDDLE_NAME_INDEX), cursor.getString(Patients.LAST_NAME_INDEX));
+                patient.setAddress(cursor.getString(Patients.ADDRESS_INDEX));
+                patient.setDob(cursor.getString(Patients.DOB_INDEX));
+                patient.setSex(cursor.getString(Patients.SEX_INDEX));
+                patient.setStateOfOrigin(cursor.getInt(Patients.STATE_OF_ORIGIN_INDEX));
+                patient.setPhone(cursor.getString(Patients.PHONE_NO_INDEX));
+                patient.setDateCreated(cursor.getString(Patients.DATE_CREATED_INDEX));
+                patients.add(patient);
+            } while (cursor.moveToNext());
+            cursor.close();
+            return patients;
+        }
+        return null;
+    }
+
+    public ArrayList<String> getAllContactsForPatientsWithDiagnosis(int diagnosisId) {
+        ArrayList<String> contacts = new ArrayList<>();
+        Cursor cursor = database.query(GlycemicDataTable.TABLE_NAME, new String[] {DBContract.getName(GlycemicDataTable.PATIENT_ID)}, DBContract.getName(GlycemicDataTable.DIAGNOSIS_ID) + " = ?", new String[] {String.valueOf(diagnosisId)}, null, null, null);
+        if (cursor.moveToFirst()) {
+            contacts.add(getPatientContact(cursor.getInt(0)));
+        }
+        cursor.close();
+        return contacts;
+    }
+
+    public int getPatientCountWithDiagnosis(int diagnosisId) {
+        Cursor cursor = database.rawQuery("SELECT COUNT (*) FROM " + GlycemicDataTable.TABLE_NAME + " WHERE " + DBContract.getName(GlycemicDataTable.DIAGNOSIS_ID) + "=?",
+                new String[] {String.valueOf(diagnosisId)});
+        if (cursor.moveToFirst()) {
+            int count = cursor.getInt(0);
+            cursor.close();
+            return count;
+        }
+        cursor.close();
+        return 0;
     }
 
     /**
@@ -153,9 +232,9 @@ public class DatexDataSource {
         return "";
     }
 
-    public ArrayList<Diagnosis> getAllDiagnosis() {
+    public List<Diagnosis> getAllDiagnosis() {
         Cursor cursor = database.query(DiagnosisTable.TABLE_NAME, null, null, null, null, null, null);
-        ArrayList<Diagnosis> allDiagnosis = new ArrayList<>();
+        List<Diagnosis> allDiagnosis = new ArrayList<>();
         if (cursor.moveToFirst()) {
             allDiagnosis.add(new Diagnosis(cursor.getInt(DiagnosisTable.ID_INDEX), cursor.getString(DiagnosisTable.NAME_INDEX)));
         }

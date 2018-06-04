@@ -45,20 +45,13 @@ public class Patient implements DatabaseObject {
     public String getLastName() {
         return lastName;
     }
+
     public String getDob() {
         return dob;
     }
 
-    public String getFirstName() {
-        return firstName;
-    }
-
     public String getMiddleName() {
         return middleName;
-    }
-
-    public String getLastName() {
-        return lastName;
     }
 
     public void setDob(String dob) {

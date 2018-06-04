@@ -35,7 +35,7 @@ public class DatexDataSource {
 
     /**
      * the function that opens the database.
-     *
+     *`
      * @throws SQLiteException on failure to get writable database.
      */
     public void open() throws SQLiteException {

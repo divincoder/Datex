@@ -10,7 +10,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.datex.datex.activity.AllPatientActivity;
-import com.datex.datex.activity.NavigationActivity;
 import com.datex.datex.model.Patient;
 
 import java.util.ArrayList;

@@ -10,7 +10,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
+import com.datex.datex.DetailsActivity;
 import com.datex.datex.R;
 import com.datex.datex.activity.AddPatientActivity;
 import com.datex.datex.activity.NavigationActivity;
@@ -26,6 +28,7 @@ import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 
 /**
@@ -35,6 +38,14 @@ public class HomeFragment extends Fragment {
 
     @BindView(R.id.piechart)
     PieChart pieChart;
+    @BindView(R.id.dashboard_all_patients)
+    LinearLayout dashboardAllPatients;
+    @BindView(R.id.dashboard_gestational)
+    LinearLayout dashboardGestattional;
+    @BindView(R.id.dashboard_females)
+    LinearLayout dashboardFemales;
+    @BindView(R.id.dashboard_males)
+    LinearLayout dashboardMales;
 
 
     public HomeFragment() {
@@ -104,7 +115,33 @@ public class HomeFragment extends Fragment {
 
         //set the formatter for the pie Chart
 
+    }
 
+    @OnClick({R.id.dashboard_males, R.id.dashboard_females, R.id.dashboard_gestational, R.id.dashboard_all_patients})
+    public void onClickHandler(View view) {
+        switch (view.getId()) {
+
+            case R.id.dashboard_males:
+                Intent intent = new Intent(getContext(), DetailsActivity.class);
+                intent.putExtra("males", "No Males Presently in the Database");
+                startActivity(intent);
+                break;
+            case R.id.dashboard_all_patients:
+                Intent intent2 = new Intent(getContext(), DetailsActivity.class);
+                intent2.putExtra("all patients", "No Patient Presently in the Database");
+                startActivity(intent2);
+                break;
+            case R.id.dashboard_females:
+                Intent intent3 = new Intent(getContext(), DetailsActivity.class);
+                intent3.putExtra("females", "No female Presently in the Database");
+                startActivity(intent3);
+                break;
+            case R.id.dashboard_gestational:
+                Intent intent4 = new Intent(getContext(), DetailsActivity.class);
+                intent4.putExtra("gestational", "No gestational patient Presently in the Database");
+                startActivity(intent4);
+                break;
+        }
     }
 
 

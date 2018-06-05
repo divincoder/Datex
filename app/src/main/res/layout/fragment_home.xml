@@ -12,11 +12,13 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:paddingBottom="@dimen/activity_horizontal_margin">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/activity_horizontal_margin"
             android:orientation="vertical">
 
 
@@ -27,6 +29,7 @@
                 android:orientation="horizontal">
 
                 <LinearLayout
+                    android:id="@+id/dashboard_all_patients"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_marginEnd="@dimen/content_spacing"
@@ -60,6 +63,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/dashboard_gestational"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_marginEnd="@dimen/activity_horizontal_margin"
@@ -76,21 +80,17 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
-                        android:text="@string/label_new_week_entries"
+                        android:text="Gestational DM"
                         android:textColor="@color/white"
                         android:textSize="16sp"
                         android:textStyle="bold" />
 
-                    <TextView
-                        android:id="@+id/new_week_entries_count_tv"
-                        android:layout_width="wrap_content"
+                    <ImageView
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:paddingTop="@dimen/content_spacing"
-                        android:text="13"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/count_text_size"
-                        android:textStyle="bold" />
+                        android:layout_marginTop="@dimen/activity_horizontal_margin"
+                        android:paddingBottom="5dp"
+                        app:srcCompat="@drawable/ic_pregnant_woman" />
 
                 </LinearLayout>
             </LinearLayout>
@@ -103,6 +103,7 @@
                 android:orientation="horizontal">
 
                 <LinearLayout
+                    android:id="@+id/dashboard_males"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_marginEnd="@dimen/content_spacing"
@@ -131,6 +132,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/dashboard_females"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_marginEnd="@dimen/activity_horizontal_margin"

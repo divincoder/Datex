@@ -27,16 +27,17 @@
         <activity
             android:name=".activity.AllPatientActivity"
             android:label="@string/label_all_patients"
-            android:parentActivityName=".activity.NavigationActivity">
-
-        </activity>
+            android:parentActivityName=".activity.NavigationActivity" />
         <activity
             android:name=".activity.NotificationActivity"
-            android:theme="@style/AppTheme.NoActionBar"
             android:label="@string/notification_label"
-            android:parentActivityName=".activity.NavigationActivity">
+            android:parentActivityName=".activity.NavigationActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
 
-        </activity>
+        <activity
+            android:name=".DetailsActivity"
+            android:label="Patients"
+            android:parentActivityName=".activity.NavigationActivity" />
     </application>
 
 </manifest>

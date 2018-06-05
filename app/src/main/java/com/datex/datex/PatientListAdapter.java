@@ -63,8 +63,8 @@ public class PatientListAdapter extends RecyclerView.Adapter<PatientListAdapter.
 
         @Override
         public void onClick(View v) {
-            Intent intent = new Intent(mContext, AllPatientActivity.class);
-            mContext.startActivity(intent);
+//            Intent intent = new Intent(mContext, AllPatientActivity.class);
+//            mContext.startActivity(intent);
         }
     }
 }

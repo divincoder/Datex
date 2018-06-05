@@ -10,6 +10,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.datex.datex.DetailsActivity;
 import com.datex.datex.R;
 import com.datex.datex.fragment.AllPatientFragment;
 import com.datex.datex.fragment.HomeFragment;
@@ -116,6 +117,9 @@ public class NavigationActivity extends BaseActivity
                 intent = new Intent(NavigationActivity.this, AddPatientActivity.class);
                 startActivity(intent);
                 break;
+            case R.id.nav_new_week_entries:
+                intent = new Intent(NavigationActivity.this, DetailsActivity.class);
+                startActivity(intent);
         }
         return true;
     }

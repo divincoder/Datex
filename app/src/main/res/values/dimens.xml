@@ -11,4 +11,12 @@
     <dimen name="large_content_spacing">32dp</dimen>
     <dimen name="large_text_count">60sp</dimen>
     <dimen name="label_text_size_large">35sp</dimen>
+
+    <dimen name="text_view_small_size">12sp</dimen>
+    <dimen name="text_view_smaller_size">10sp</dimen>
+    <dimen name="text_view_medium_size">20sp</dimen>
+    <dimen name="text_view_regular_size">16sp</dimen>
+    <dimen name="text_view_large_size">25sp</dimen>
+    <dimen name="text_view_larger_size">30sp</dimen>
+    <dimen name="text_view_largest_size">40sp</dimen>
 </resources>
